@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input/post.html</title>
+</head>
+<body>
+    <a href="../main.html">Main페이지로..</a>
+    <br><br>
+    <form action="post.jsp" method="post">
+        <table border='1'>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="id"></td> <!--type 어떤방식으로 보여줄지(text방식 password방식 등), name 파라미터값, 자바에서 쓰이는 값-->
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" name="pass"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="OK"><!--submit 해당되는 페이지로 전송-->
+                    <input type="reset" value="Cancel"></td><!--입력한 값들을 초기화 (클리어)-->
+                </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input/button.html</title>
+    <script>
+        function showPage() {
+            var v_name = document.getElementById("username").value;//getElementById() : 아이디값을 찾아서 읽어오라는 의미
+            var v_gender = document.getElementById("male").value;
+            location.href='button.jsp?name='+v_name+'&gender='+v_gender;
+        }
+    </script>
+</head>
+<body>
+    <a href="../main.html">Main페이지로..</a>
+    <h1>Button 태그 </h1>
+    <form action="button.jsp" method="get">
+        Name: <input type="text" id="username" name="name" value="홍길동"><br>
+        성별: 
+        <input type="radio" name="gender" id="male" value="Male">
+        <label for="male">Male</label><br>
+        <input type="radio" name="gender" id="female" value="Female">
+        <label for="female">Female</label><br><!--for는 어디에 라벨을 붙이겠느냐 묻는 것-->
+        <input type="submit" value="전송"><!--submit은 버튼 모양에 기능까지 있지만, button은 버튼 모양만 있지 기능은 없다.-->
+        <input type="button" onclick="showPage()" value="Click"><!--location이 button.jsp로 넘기겠다는 의미 location.href='button.jsp'를 showPage()에 담는다-->
+    </form>
+</body>
+</html>
