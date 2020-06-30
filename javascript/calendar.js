@@ -6,9 +6,13 @@ for (var i=0; i<dayAry.length; i++) {
     document.write('<th>'+dayAry[i]+'</th>');
 }
 document.write('</tr>');
-
+var num = 0;
 for (var i=0; i<5; i++) {
     document.write('<tr>');
+    for (var j=0; j<7; j++) {
+        num = (i*7)+j;
+        document.write('<td>'+num+'</td>');
+    } 
     document.write('</tr>');
 }
 // for (var i=0; i<dayNum.length; i++) {
