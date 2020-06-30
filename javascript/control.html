@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/control.html</title>
+</head>
+<body>
+    <input type="text" id="score" value="80" placeholder="숫자입력">
+    <br>
+    <button onclick="checkScore()">Click</button><br>
+    <p id="show" style="background-color: blue;"></p>
+    <script>
+        function checkScore() {
+            var score = document.getElementById('score').value;//score라는 아이디를 가진 태그의 value를 가져와 score라는 변수에 담는다.
+            console.log(typeof score);//score의 타입을 콘솔에 출력 해보라는 의미(콘솔에 string타입이라고 뜬다.)
+            score =  parseInt(score);
+            var element1 = document.getElementById('show');//element1이 document.getElementById('show')를 담을 수 있다.
+            console.log(element1);//element1에 show 아이디를 가진 태그를 보여준다.
+            if(score>=90) {
+                element1.innerHTML = 'A';
+                element1.setAttribute('style','background-color: yellow');//p태그에 바탕색을 걸어준다.
+                // window.alert('A');
+            } else if (score>=80) {
+                element1.innerHTML = 'B';
+                // element1.setAttribute('style','background-color: yellow');
+                // window.alert('B');
+            } else if (score>=70) {
+                element1.innerHTML = 'C';
+                // element1.setAttribute('style','background-color: yellow');
+                // window.alert('C');
+            } else {
+                element1.innerHTML = 'D';
+                // element1.setAttribute('style','background-color: yellow');
+                // window.alert('D');
+            }
+        }
+    </script>
+</body>
+</html>

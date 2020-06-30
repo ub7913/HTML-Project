@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/basic.html</title>
+    <script src="basic.js"  /> //방금 밑에 쓴 script를 js파일에 따로 담고 import했다.
+    <script>
+    </script>
+</head>
+
+<body>
+    <p id="id"></p>
+    <p id="show">World</p>
+    <script>//코드가 순차적으로 진행되는게 원칙인데 id가 show인 태그가 script 태그보다 아래 있으면 script는 무쓸모가 된다.
+        document.getElementById("show").innerHTML = "Hello"; //element는 태그들(ex, p div등)의 요소를 의미한다.
+    </script>
+</body>
+
+</html>

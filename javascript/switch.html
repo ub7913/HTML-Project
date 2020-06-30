@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/switch.html</title>
+</head>
+<body>
+    <script>
+        var week = new Date().getDay();//오늘의 요일을 숫자로 리턴해줌
+        console.log(week);
+        var day;
+        switch(week) {
+            case 0:
+                day = "일요일";break;
+            case 1:
+                day = "월요일";break;
+            case 2: 
+                day = "화요일";break;
+            default:
+                day = "그 외";
+        }
+        document.write("오늘은" + day + "입니다.");
+    </script>
+</body>
+</html>
