@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/object.html</title>
+</head>
+<body>
+    <script>
+
+        var person = { //person이라는 인스턴스를 만든것.
+            firstName: "Kildong",
+            lastName: "Hong",
+            age: 20,
+            fullName: function() { return this.firstName + ' ' + this.lastName }//function도 매개값으로 올 수 있다.
+        }
+
+        console.log(person.firstName, person.lastName)
+        console.log(person.fullName());//오브젝트 안에서의 function은 메소드 이다. 그래서 실행 시키려면 ()가 필요하다.
+
+        var anyAry = [1,2,3,4,'hello', person];//자바스크립트는 어떠한 타입도 다 받을 수 있다.
+        for (var i=0; i<anyAry.length; i++){
+            console.log(anyAry[i]);
+        }
+
+        console.log(anyAry[5].firstName);//배열의 6번째 인덱스에 있는 오브젝트의 firstName을 가져옴
+    </script>
+</body>
+</html>

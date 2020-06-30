@@ -14,12 +14,12 @@
             document.getElementById("show").innerHTML = localStorage.clickCnt;
         }
 
-        function setName() {
+        function setName() { //눈에 띄는 변화는 없지만 localStorage(페이지안)에 입력 한 값이 저장 되게 하는 것.
             var v_name = document.getElementById("name").value;
             localStorage.setItem("txtName", v_name);
         }
 
-        function getName() {
+        function getName() { //저장된 값을 경고창을 통해 불러 오는 것.
             var v_name = localStorage.getItem("txtName");
             window.alert(v_name);
         }
@@ -32,4 +32,4 @@
     <button onclick="setName()">SetName</button>
     <button onclick="getName()">GetName</button>
 </body>
-</html>
+</html> 
