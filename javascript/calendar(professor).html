@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/calender.html</title>
+    <!-- <script src="calendar.js"></script> -->
+</head>
+
+<body>
+    <p id="cal"></p>
+    <script>
+        var dayAry = ['일', '월', '화', '수', '목', '금', '토'];
+        var $table = document.createElement('table');
+        $table.setAttribute('border', '1');
+        var $tr = document.createElement('tr');
+
+        for (var i = 0; i < dayAry.length; i++) {
+            var $th = document.createElement('th');
+            var $text = document.createTextNode(dayAry[i]);
+            $th.appendChild($text);
+            $tr.appendChild($th);
+        }
+        $table.appendChild($tr);
+        $tr = document.createElement('tr');
+        for (var i = 0; i < 31; i++) {
+            var $text = document.createTextNode(i);
+            var $td = document.createElement('td');
+            $td.appendChild($text);
+            $tr.appendChild($td);
+            if (i % 7 == 0 && i == 0) {
+                $td.setAttribute('style', 'background-color:red');
+                $td.appendChild($text);
+                // document.write('<td>'+ '&nbsp' +'</td>')
+            }
+            if (i % 7 == 0) {
+                $td.setAttribute('style', 'background-color:red');
+            }
+            if (i % 7 == 6) {
+                $td.setAttribute('style', 'background-color:lightblue');
+                $table.appendChild($tr);
+                $tr = document.createElement('tr');
+            }
+        }
+        $table.appendChild($tr);
+        document.getElementById("cal").appendChild($table);
+    </script>
+
+</body>
+
+</html>

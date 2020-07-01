@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/array.html</title>
+</head>
+
+<body>
+    <script>
+        var ary = ['hong', 'kim', 'park'];
+        for (var i = 0; i < ary.length; i++) {
+            console.log(ary[i]);
+        }
+        ary[0] = 'hwang';
+        ary[1] = 'lee';
+        for (name of ary) {
+            console.log(name);
+        }
+
+        var ary2 = new Array('hong', 'kim', 'park');//자바 스크립트에서는 이렇게 인스턴스를 새롭게 생성해서 만드는걸 잘 하지 않음
+
+        var person = {
+            firstName: 'kildong',
+            lastName: 'Hong',
+            age: 30
+        }
+        console.log(person.firstName);
+        console.log(person["firstName"]);//여기서 []는 person에서의 해당되는 키의 값을 가져 오는 것이다. 배열에서 쓰는 []다르다.
+        console.log("===============")
+        for(p in person){//위의 확장for문과 비슷하게 쓰이는 것, 오브젝트의 필드값들을 배열처럼 담는것.
+            console.log("필드명: " + p + ", 값: " + person[p]);
+        }
+
+        var fruits = ['banana', 'apple', 'orange', 'mango'];
+        document.write("<ul>");
+        // for(var i=0; i<fruits.length; i++) {
+        for (fruit of fruits) {
+            document.write("<li>" + fruit + "</li>");
+        }
+        document.write("</ul>");
+
+        fruits.forEach(function(a,b,c) {
+            console.log(a,b,c);
+        });//배열의 각각의 요소를 해당되는 function을 실행 하라는 의미, function이 매개값으로 올수 없는데 자바스크립트는 가능하다.
+        //a=배열의 요소 b=인덱스 값 c=배열 그 자체
+
+        document.write("<ol>");
+        fruits.forEach(function(a,b,c) {
+            // console.log(a,b,c);
+            document.write("<li>" + a + "</li>"); //위의 확장 for문 처럼 사용 할 수 있는 또 다른 방법중 하나다.
+        });
+        document.write("</ol>");
+
+        var persons = [];
+        var person1 = {
+            firstName:"kildong",
+            lastName:"Hong",
+            age:20
+        }
+        var person2 = {
+            firstName:"Hoil",
+            lastName:"Park",
+            age:33
+        }
+        var person3 = {
+            firstName:"sungtak",
+            lastName:"Oh",
+            age:30
+        }
+
+        persons[0] = person1;
+        persons.push(person2);//배열에서 제공하는 메소드 push를 이용하여 배열에 오브젝트를 삽입가능
+        persons.push(person3);
+        for (p of persons) {
+            console.log(p.firstName, p.lastName, p.age);
+        }
+
+        document.write("<ol>");
+        persons.forEach(function(obj, idx, ary) {
+            document.write("<li>" + idx.firstName + "</li>")
+        });
+        document.write("</ol>");
+
+        
+        
+        //실습 (테이블 만들기)
+
+        //헤더만들기
+        // var headerAry = ['firstName', 'lastName', 'age']
+        document.write('<table border="1"');
+        document.write('<tr>');
+        for (p in person1){
+            document.write('<th>' + p + '</th>');
+        }
+
+        //for문으로 만들기
+        // for (p of persons) {
+        //     document.write('<tr>');
+        //     document.write('<td>' + p.firstName + '</td>'
+        //                   +'<td>' + p.lastName + '</td>'
+        //                   +'<td>' + p.age + '</td>'
+        //                   );
+        //     document.write('</tr>');
+        // }
+
+        //forEach이용해서 만들기
+
+        persons.forEach(showTable);
+        document.write('</table>');
+
+        function showTable(obj) { //forEach에서 실행할 문장을 밖으로 꺼내서 메소드처럼 만들어 놓음
+            document.write('<tr>');
+            document.write('<td>' + obj.firstName + '</td>'
+                          +'<td>' + obj.lastName + '</td>'
+                          +'<td>' + obj.age + '</td>'
+                          );
+            document.write('</tr>');
+        }
+        // document.write('</tr>');
+    </script>
+</body>
+
+</html>

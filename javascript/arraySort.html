@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/arraySort</title>
+</head>
+<body>
+    <script>
+    // var persons = [];
+        var person1 = {
+            firstName:"kildong",
+            lastName:"Hong",
+            age:20
+        }
+        var person2 = {
+            firstName:"hoil",
+            lastName:"Park",
+            age:33
+        }
+        var person3 = {
+            firstName:"aungtak",
+            lastName:"Oh",
+            age:30
+        }
+        
+        var persons = ['hong','hwang','park','kim'];
+        persons = [20, 12, 1, 100, 10];
+                persons.sort(function (a,b) {
+                    return b-a;//배열에서 두 수를 비교해서 -가 나오면 오름차순, +가 나오면 내림차순
+                });//정렬을 해줌 , 배열에서의 sort()는 숫자도 문자로 접근한다. 숫자를 정렬하려면 ()안에 매개값을 줘야한다.
+
+    persons = [person1, person2, person3];
+    persons.sort(function (a,b) {
+        if(a.firstName<b.firstName)
+            return -1;//a의 이름이 b의 이름보다 abc순으로 앞에서 시작하면 오름차순
+        else if (a.firstName>b.firstName)
+            return 1;//a의 이름가 b의 이름보다 abc순으로 뒤에서 시작하면 내림차순
+        else
+            return 0;
+        // if(a.age>b.age)
+        //     return -1;//a의 나이가 b의 나이보다 크면 오름차순
+        // else if (a.age<b.age)
+        //     return 1;//a의 나이가 b의 나이보다 작으면 내림차순
+        // else
+        //     return 0;
+        // return a.age - b.age;
+    });
+
+    for(person of persons) {
+        document.write("<p>" + person.firstName + ", " + person.lastName + ", " + person.age + "</p>");
+    }
+    </script>
+</body>
+</html>

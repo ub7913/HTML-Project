@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/string.html</title>
+</head>
+<body>
+    <script>
+        var str = "Hello"; //typeof str -> string
+        //str.length //str의 해당되는 문자의 길이를 알려줌
+        var str2 = new String("Hello");
+        console.log(str == str2);// ==은 값을 비교 ture가 나옴 
+        console.log(str === str2);// ===은 값과 타입을 비교 그래서 false가 나옴
+
+        str='Please locate where "locate" occurs!';
+        console.log(str.indexOf('locate'));//locate를 찾아 해당되는 위치의 첫번째 인덱스 리턴 받을때 씀(한칸한칸이 인덱스), 해당되는 문자가 없으면 -1을 리턴한다.
+        console.log(str.lastIndexOf('locate'));//뒤에서 인덱스를 찾아 오기 시작, 인덱스 번호는 앞에서 세어옴
+        console.log(str.indexOf('locate', 10));// 10번째 인덱스부터 찾기 시작
+        console.log(str.search('locate'));
+
+        var result = str.slice(7,13);//substring, substr : 7~13번째 인덱스의 값을 가져옴
+        document.write('<b>' + result + '</b>');
+
+        result = str.substr(7,12);//7번 인덱스 부터시작해서 13개의 인덱스를 가져 오라는 의미
+        document.write('<h1>' + result + '</h1>');
+
+        result = str.replace('locate', 'rocate'); //locate의 첫번째 locate만 값을 바꿈
+        console.log(result);
+
+        result = str.replace(/locate/g, 'rocate'); //모든 locate를 rocate로 바꿈
+        console.log(result);
+
+        str='Please locate where "LOCATE" occurs!';
+
+        result = str.toLowerCase();//소문자
+        result = str.toUpperCase();//대문자
+
+        result = "Hello".concat(" World!", " welcome");//문자를 합쳐줌
+        console.log(result);
+
+        var sp = "banana,orange,apple".split(",");//,을 기준으로 배열을 만들어줌
+        for (var i=0; i<sp.length; i++){
+            document.write(sp[i]);
+        }
+        for (i of sp) { //java에서 썼던 확장 for문
+            console.log(i);
+        }
+    </script>
+</body>
+</html>

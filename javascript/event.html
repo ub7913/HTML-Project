@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/event.html</title>
+</head>
+<body>
+    <p id="show"></p>
+    <button onclick="showCurrentTime()" 
+            onmouseover="changeBackground(this)"
+            onmouseout="originBackground(this)">Click</button>
+    <script>
+        function showCurrentTime() {
+            document.getElementById('show').innerHTML = Date();
+        }
+        function changeBackground(elmt) {//마우스(this)를 버튼 위에 올렸을때 나타낼 이벤트
+            console.log(elmt);//elmt가 위에서 받는 this(button)값임을 알 수 있다.
+            elmt.setAttribute('style', 'background-color: yellow');//버튼에 style을 지정해준다.
+        }
+        function originBackground(elmt) {//마우스가 벗어 났을때 나타낼 이벤트
+            console.log(elmt.getAttribute('style'));//마우스가 elmt(button(this))에서 벗어 났을때 style을 get한다.
+            elmt.setAttribute('style', 'background-color: null');//마우스가 elmt(button(this))에서 벗어 났을때 style을 null로 준다.
+        }
+    </script>
+</body>
+</html>
