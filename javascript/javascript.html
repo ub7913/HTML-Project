@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/javascript.html</title>
+    <script src="func1.js"></script>
+</head>
+<body>
+    <p id="show"></p>
+    <p class="show"></p>
+    <p class="show"></p>
+    <button onclick = "sum(10, 5)">Click</button>
+    <button onclick = "mySum()">mySum</button>
+    <button onclick = "arrayTest()">arySum</button>
+    <button onclick = "funcTest()">funcTest</button>
+    <script>
+        console.log(document.getElementsByClassName("show"));//클래스 아이디가show인 것을 javascript로 불러 올때
+        var ddd = document.getElementsByClassName("show");//show인 클래스가 선언된 태그가 두개 있는데, 이 두 태그를 배열처럼 담을 수 있다.
+        // ddd[0].innerHTML = "Hello";
+        // ddd[1].innerHTML = "World";
+        // document.getElementById("show").innerHTML="<h1>Hello</h1>";//여기서 id인 show를 읽어오려면 script태그보다 위에 있어야 한다.(위에서 부터 순차적으로 실행 되기 때문)
+
+        // funcTest();//바로 정의 된 function을 실행한다. ()는 실행하라는 의미
+
+        var x = 10;
+        let y = 10;//변수를 선언하는 또다른 선언자
+        function getXvalue() {
+            x = 20;
+            y = 20;
+            console.log('x1 ' + x);//x1은 20, x2는 10, var x =20;은 function밖에서 선언한 x와 같은 이름으로 또 다르게 다시 선언한 것이다. 
+            //만약 var 없이 x = 20;을 선언하면 그 아래로 사용되는 모든 변수 x는 20으로 통일된다. 블럭 단위로 변수를 구분 하기 위해서 var를 사용
+            console.log('y1 ' + y);
+        }
+        getXvalue();
+        var x = 10;
+        // let y = 10;//let은 중복 선언이 되지 않는다.
+        console.log('x2 ' + x);
+        console.log('y2 ' + y);
+    </script>
+</body>
+</html>
