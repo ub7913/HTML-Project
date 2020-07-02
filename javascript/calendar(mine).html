@@ -10,44 +10,56 @@
 
 <body>
     <p id="cal"></p>
-    <button onclick="showCalendar(2020,7)">showCal</button><!--우리눈에는 7월로 보이지만 컴퓨터는 8월을 인식함-->
-    <button onclick=""><</button>
-    <button onclick="">></button>
+    <button onclick="prevCal()">prev</button>
+    <button onclick="curCal()">cur</button>
+    <button onclick="nextCal()">next</button>
     <script>
-        function showCalendar(year, month) {//해당하는 월의 1일과 마지막일을 알면 다른 달의 달력도 만들수 있다.
-            var today = new Date(year, month-1, 1); //변수로 들어온 해당되는 년과 월의 날짜를 받아서, 그 달의 1일을 담는다. month에 7을 담았지만 컴퓨터는 8월을 의미한다.
-            console.log(today.getDay());//요일을 숫자로 리턴 0~1
-            console.log(new Date(year, month, 0).getDate());//그달 첫날(1일)의 -1은 0이 되고 전날을 의미 하니까 전달의 말일을 의미함
+        var today = new Date();
+
+        function prevCal() {
+            today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+            curCal();
+        }
+
+        function nextCal() {
+            today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+            curCal();
+        }
+
+        function curCal() {
+            firstDay = new Date(today.getFullYear(), today.getMonth(), 1).getDay();//요일을 가져옴
+            lastDay = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();//잘짜를 가져옴
+            console.log(firstDay);
+            console.log(lastDay);
             var dayAry = ['일', '월', '화', '수', '목', '금', '토'];
-            var $table = document.createElement('table');//createElement 요소를 만드는 메소드, $table안에 <table></table> 이렇게 요소를 만들겠다는 의미
+            var $table = document.createElement('table');
             $table.setAttribute('border', '1');
-            var $tr = document.createElement('tr');//$tr = <tr></tr>
+            var $tr = document.createElement('tr');
 
             for (var i = 0; i < dayAry.length; i++) {
-                var $th = document.createElement('th');//<th></th>
-                var $text = document.createTextNode(dayAry[i]);//createTextNode태그 안에 들어갈 텍스트를 만드는것
-                $th.appendChild($text);//th에다가 자식으로 $text를 담겠다는 의미 <th>일</th>
-                $tr.appendChild($th);//<tr><th>일</th><th>월</th>......<th>토</th></tr> 이렇게 담길 것임
+                var $th = document.createElement('th');
+                var $text = document.createTextNode(dayAry[i]);
+                $th.appendChild($text);
+                $tr.appendChild($th);
             }
-            $table.appendChild($tr);//<table><tr><th>일</th><th>월</th>......<th>토</th></tr></table>
+            $table.appendChild($tr);
             $tr = document.createElement('tr');
-            emptTd = new Date(year, month-1, 1).getDay();
-            console.log(emptTd);
-            for (var i = 0; i < emptTd; i++) {
+
+            for (var i = 0; i < firstDay; i++) {
                 var $td = document.createElement('td');
                 $td.appendChild(document.createTextNode(' '));
                 $tr.appendChild($td);
             }
-            for (var i = 0; i < 30; i++) {
+            for (var i = 0; i < lastDay; i++) {
                 var $text = document.createTextNode(i + 1);
                 var $td = document.createElement('td');
-                $td.appendChild($text);//<tr><td>1</td></tr>
+                $td.appendChild($text);
                 $tr.appendChild($td);
-                
-                if ((i + emptTd) % 7 == 0) {
+
+                if ((i + firstDay) % 7 == 0) {
                     $td.setAttribute('style', 'background-color:red');
                 }
-                if ((i + emptTd) % 7 == 6) {
+                if ((i + firstDay) % 7 == 6) {
                     $td.setAttribute('style', 'background-color:lightblue');
                     $table.appendChild($tr);
                     $tr = document.createElement('tr');//얘가 줄바꿔주는것임
@@ -56,6 +68,8 @@
             $table.appendChild($tr);
             document.getElementById("cal").appendChild($table);
         }
+
+
     </script>
 
 </body>
