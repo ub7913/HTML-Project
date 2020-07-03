@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/event1.html</title>
+    <script>
+        function showCurrentTime() {
+            document.getElementById("show").innerHTML = Date();
+        }
+    </script>
+</head>
+<body>
+    ID : <input type="text" id = "a">
+    FIRST_NAME : <input type="text" id = "b"> 
+    LAST_NAME : <input type="text" id = "c"> 
+    <button id="btn">Click</button>
+    <p id="show"></p>
+   
+    <script>
+        // console.log(this);
+        // console.log
+        // var btn = document.getElementById("btn");
+        // btn.onclick = showCurrentTime; //불러올 요소에 이벤트를 걸어서 function을 줄 수 있다. 
+        //                                 //여기서 주의 할 것이 자바 스크립트 안에서 ()는 바로 실행되므로 
+        //                                  //클릭이라는 이벤트가 발생할때 function이 실행 되려면 ()가 없어야 한다.
+        // btn.onmouseover = function() {
+        //     btn.setAttribute("style","background-color:yellow");
+        // }
+        // btn.onmouseout = function() {
+        //     btn.setAttribute("style","background-color:null");
+        // }
+
+        var jsonData = [{ "id": 1, "first_name": "Wells", "last_name": "Bingley", "email": "wbingley0@independent.co.uk", "gender": "Male" },
+        { "id": 2, "first_name": "Gwendolen", "last_name": "Swinnard", "email": "gswinnard1@google.com", "gender": "Female" },
+        { "id": 3, "first_name": "Devland", "last_name": "Burgwyn", "email": "dburgwyn2@booking.com", "gender": "Male" },
+        { "id": 4, "first_name": "Clevie", "last_name": "Hertwell", "email": "chertwell3@wired.com", "gender": "Male" },
+        { "id": 5, "first_name": "Christel", "last_name": "Bachelor", "email": "cbachelor4@aol.com", "gender": "Female" },
+        { "id": 6, "first_name": "Alma", "last_name": "Bangley", "email": "abangley5@wp.com", "gender": "Female" }];
+
+        var titles = ["id", "first_name", "last_name"];
+
+        var $table = document.createElement("table");
+        $table.setAttribute("border","1");
+        $table.setAttribute("id", "tbl");
+        var $tr = document.createElement("tr");
+        for (field of titles) {
+            var $th = document.createElement("th");
+            var $text = document.createTextNode(field.replace("_","").toUpperCase());
+            $th.appendChild($text);
+            $tr.appendChild($th);
+        }
+        $table.appendChild($tr);
+        jsonData.forEach(function(o,i,a) {
+            var $tr = document.createElement("tr");
+            for (field of titles) {
+                var $td = document.createElement("td");
+                var $text = document.createTextNode(o[field]);
+                $td.appendChild($text);
+                $tr.appendChild($td);
+            }
+            $td = document.createElement("td");
+            var $button = document.createElement("button");
+            $button.innerHTML = "Click";
+            $button.onmouseover = function() {
+                // window.alert("click");
+                this.parentNode.parentNode.style.background = "yellow"; //this는 button, button의 상위(parentNode)는 td, 
+                                                                        //td의 상위 tr의 스타일로 백그라운드 색을 yellow로 줌
+            };
+            $button.onmouseout = function() {
+                this.parentNode.parentNode.style.background = "";
+            }
+            $button.onclick = function() {
+                this.parentNode.parentNode.remove();
+            }
+            $td.appendChild($button);
+            $tr.appendChild($td);
+            $table.appendChild($tr);
+            var show = document.getElementById('show');
+            var $btn=document.getElementById('btn');
+            var tbl = document.getElementById("tbl");
+            
+            $btn.onclick = addList();
+            function addList() {
+                var a = document.getElementById("a").value;
+                var b = document.getElementById("b").value;
+                var c = document.getElementById("c").value;
+                var id = [a,b,c];
+                // document.write("<tr><td>"+a+"</td><td>"+b+"</td><td>"+c+"</td></tr>");
+                var $tr = document.createElement("tr");
+                for (var i=0; i<3; i++) {
+                    var $td = document.createElement("td");
+                    var $text = document.createTextNode(id[i]);
+                    $td.appendChild($text);
+                }
+                $tr.appendChild($td);
+                $table.appendChild(tbl);
+            }
+        });
+        
+        show.appendChild($table);
+    </script>
+</body>
+</html>

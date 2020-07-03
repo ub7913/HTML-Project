@@ -17,16 +17,19 @@
         var today = new Date();
 
         function prevCal() {
+            document.getElementById("cal").innerHTML = "";
             today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
             curCal();
         }
 
         function nextCal() {
+            document.getElementById("cal").innerHTML = "";
             today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
             curCal();
         }
 
         function curCal() {
+            document.getElementById("cal").innerHTML = "";
             firstDay = new Date(today.getFullYear(), today.getMonth(), 1).getDay();//요일을 가져옴
             lastDay = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();//잘짜를 가져옴
             console.log(firstDay);

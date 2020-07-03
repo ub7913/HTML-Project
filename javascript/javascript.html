@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>javascript/javascript.html</title>
-    <script src="func1.js"></script>
+    
 </head>
 <body>
     <p id="show"></p>
@@ -13,6 +13,7 @@
     <button onclick = "sum(10, 5)">Click</button>
     <button onclick = "mySum()">mySum</button>
     <button onclick = "arrayTest()">arySum</button>
+    <button onclick="func2('hello')">funcTest2</button>
     <button onclick = "funcTest()">funcTest</button>
     <script>
         console.log(document.getElementsByClassName("show"));//클래스 아이디가show인 것을 javascript로 불러 올때
@@ -38,5 +39,6 @@
         console.log('x2 ' + x);
         console.log('y2 ' + y);
     </script>
+    <script src="func2.js"></script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/funcExample.html</title>
+</head>
+<body>
+    <input type="text" id="val1"> +
+    <input onchange="elementFunc()" type="text" id="val2"> =
+    <input type="text" id="result"><br>
+    <button onclick="elementFunc()">Click</button>
+    <script>
+        
+        var plusfunc = function(a,b) {
+            return a + b;
+        }
+        // plusfunc(10, 20);
+        // console.log(plusfunc(10, 20));
+        var elementFunc = function() {
+            var a = document.getElementById("val1").value;
+            var b = document.getElementById("val2").value;
+            var result = plusfunc(parseInt(a), parseInt(b));
+            document.getElementById("result").value = result;//.innerHTML은 p, h1태그 같은것들에 들어가는 것이고 input태그는 value의 값이 필요하다
+        }
+        // var elementFunc = function() {
+        //     var a = document.getElementById("val1").value;
+        //     var b = document.getElementById("val2").value;
+        //     if(val2 == "") {
+        //         val2=0;
+        //     }
+        //     document.getElementById("result").value = parseInt(a) + parseInt(b);
+        // }
+    </script>
+</body>
+</html>

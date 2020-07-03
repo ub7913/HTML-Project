@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/object2.html</title>
+</head>
+<body>
+    <script>
+        for(var i=0; i<10; i++) {
+            document.write("<p class='col'>" + i + "</p>");
+        }
+
+        var elmtAry = document.getElementsByClassName("col");//배열 모양으로 class들이 들어 가 있음
+        // console.log(elmtAry);
+        // elmtAry[0].innerHTML = "first";//0번째 인덱스에 있는 클래스의 이름을 가진 p태그를 가져온다.
+        var newAry = [];
+        for(var i = 0; i<elmtAry.length; i++) {
+            newAry.push(elmtAry[i].innerHTML)
+        }
+
+        // var sliceAry = elmtAry.slice(5,2);//splice는 클래스가 담긴 collection에 해당되는 위치를 자름, 5번째 부터 2개를 spliceAry로 담겠다. 그런데, 그냥 배열 에서 쓰는 slice를 클래스가 담긴 collection에 쓰려니 안됨....
+        var spliceAry = newAry.splice(5,2);//newAry배열의 5번째 부터 2개를 spliceAry로 담겠다. 뒤의 2의 값이 없이 5만 있으면 5부터 끝까지 담겠다는 의미
+        console.log(spliceAry);
+
+        var spliceAry1 = newAry.splice(0,3);
+
+        var totalSplice = spliceAry.concat(spliceAry1); // 두개의 배열을 붙일때 쓰는 메소드 concat
+        console.log(totalSplice);
+
+        var sum = 0;
+        document.write("<ul>");
+        totalSplice.forEach(callbackFunc);//forEach문이 길어지면 이렇게 새롭게 정의문 하나 만들어서 해도 됨
+        document.write("</ul>");
+        // document.write("결과: " + sum);
+
+        // var callbackFunc = function(a,b,c) { //배열에서 forEach의 a는 인덱스 안에 담긴 값, b는 인덱스 번호, c는 배열 그 자체를 의미한다.
+        //     console.log(a, b, c);
+        //     sum += parseInt(a);//a가 그냥 string으로 인식해서 parseInt해줘야 한다.
+        // }; //이것도 나눠 쓸 수 있다.
+
+        function callbackFunc(a,b,c) {
+            // sum += parseInt(a);
+            document.write("<li> index: " + b + ", value: " + a + "</li>");
+        }
+
+        var callbackFunc = function(a,b,c) { 
+            sum += parseInt(a);
+        };
+    </script>
+</body>
+</html>

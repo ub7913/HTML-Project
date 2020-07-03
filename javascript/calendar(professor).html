@@ -10,12 +10,21 @@
 
 <body>
     <p id="cal"></p>
-    <button onclick="showCalendar(2020,7)">showCal</button><!--우리눈에는 7월로 보이지만 컴퓨터는 8월을 인식함-->
+    년도:<input type="text" id="year"><br>
+    월:<input type="text" id="month"><br>
+    <button onclick="showCalendar()">showCal</button><!--우리눈에는 7월로 보이지만 컴퓨터는 8월을 인식함-->
     <script>
         function showCalendar(year, month) {//해당하는 월의 1일과 마지막일을 알면 다른 달의 달력도 만들수 있다.
+            var year = document.getElementById("year").value;//사용자가 입력하는 값이 value이다.
+            var month = document.getElementById("month").value;
+
+
             var today = new Date(year, month-1, 1); //변수로 들어온 해당되는 년과 월의 날짜를 받아서, 그 달의 1일을 담는다. month에 7을 담았지만 컴퓨터는 8월을 의미한다.
-            console.log(today.getDay());//요일을 숫자로 리턴 0~1
-            console.log(new Date(year, month, 0).getDate());//그달 첫날(1일)의 -1은 0이 되고 전날을 의미 하니까 전달의 말일을 의미함
+            emptTd = today.getDay();//해당월의 1일을 가져 옴
+            var lastDay = new Date(year,month,0).getDate();
+
+            // console.log(today.getDay());//요일을 숫자로 리턴 0~1
+            // console.log(new Date(year, month, 0).getDate());//그달 첫날(1일)의 -1은 0이 되고 전날을 의미 하니까 전달의 말일을 의미함
             var dayAry = ['일', '월', '화', '수', '목', '금', '토'];
             var $table = document.createElement('table');//createElement 요소를 만드는 메소드, $table안에 <table></table> 이렇게 요소를 만들겠다는 의미
             $table.setAttribute('border', '1');
@@ -29,14 +38,13 @@
             }
             $table.appendChild($tr);//<table><tr><th>일</th><th>월</th>......<th>토</th></tr></table>
             $tr = document.createElement('tr');
-            emptTd = new Date(year, month-1, 1).getDay();
             console.log(emptTd);
             for (var i = 0; i < emptTd; i++) {
                 var $td = document.createElement('td');
                 $td.appendChild(document.createTextNode(' '));
                 $tr.appendChild($td);
             }
-            for (var i = 0; i < 30; i++) {
+            for (var i = 0; i < lastDay; i++) {
                 var $text = document.createTextNode(i + 1);
                 var $td = document.createElement('td');
                 $td.appendChild($text);//<tr><td>1</td></tr>
