@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/node.html</title>
+</head>
+<body>
+    <p id="show">
+        <table border="1" id="tbl">
+            <tr>
+                <th>EmpId</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Event</th>
+            </tr>
+            <tr>
+                <td>101</td>
+                <td>Kildong</td>
+                <td>Hwang</td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Hoil</td>
+                <td>Park</td>
+                <td><button>Delete</button></td>
+            </tr>
+            
+        </table>
+    </p>
+    <script>
+        var eid = document.getElementById('tbl').childNodes[1].childNodes[2].childNodes[1].childNodes[0];
+        console.log(eid);
+        var eid1 =document.getElementById('tbl').childNodes[1].childNodes[2].childNodes[3];
+        console.log(eid1);
+        var eid2 = document.getElementById('tbl').childNodes[1].childNodes[2].childNodes[7].childNodes[0];
+        console.log(eid2);
+        eid2.childNodes[0].nodeValue = "save";
+        eid2.style.background='red';
+    </script>
+</body>
+</html>
+

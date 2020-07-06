@@ -8,6 +8,20 @@
         function showCurrentTime() {
             document.getElementById("show").innerHTML = Date();
         }
+        function btnClassFunc() {
+            var btns = document.getElementsByClassName('btnClass');
+            for (var i=0; i<btns.length; i++) {
+                btns[i].onclick =function() {
+                    this.parentNode.parentNode.remove();
+                }
+                btns[i].onmouseover = function() {
+                    this.parentNode.parentNode.style.background = "yellow";
+                }
+                btns[i].onmouseout = function() {
+                    this.parentNode.parentNode.style.background = "";
+                }
+            }
+        }
     </script>
 </head>
 <body>
@@ -30,7 +44,56 @@
         // btn.onmouseout = function() {
         //     btn.setAttribute("style","background-color:null");
         // }
+        
+        //리스트 추가하기
+        var show = document.getElementById('show');
+        var $btn=document.getElementById('btn');
+        // console.log($btn);
+        // var tbl = document.getElementById('tbl');
+            
+        $btn.onclick = function() {
+            // var inputs = document.getElementsByTagName('input');//배열처럼 쓸수있지만 배열이 아니라 배열 메소드를 쓸수 없다
+            // var $tr = document.createElement("tr");
+            // for (var i=0; i<inputs.length; i++) {
+            //     var $td = document.createElement("td");
+            //     var $text = document.createTextNode(inputs[i].value);
+            //     $td.appendChild($text);
+            //     $tr.appendChild($td);
+            // }
+            // $table.appendChild($tr);
+            var a = document.getElementById("a").value;
+            var b = document.getElementById("b").value;
+            var c = document.getElementById("c").value;
+            var id = [a,b,c];
+            // document.write("<tr><td>"+a+"</td><td>"+b+"</td><td>"+c+"</td></tr>");
+            var $tr = document.createElement("tr");
+            for (var i=0; i<3; i++) {
+                var $td = document.createElement("td");
+                var $text = document.createTextNode(id[i]);
+                $td.appendChild($text);
+                $tr.appendChild($td);
+            }
+            $table.appendChild($tr);
 
+            //내용 추가후 오른쪽에 버튼 달아주기
+            $td = document.createElement("td");
+            var $button = document.createElement("button");
+            $button.innerHTML = "Click";
+            $button.onmouseover = function() {
+                // window.alert("click");
+                this.parentNode.parentNode.style.background = "yellow"; //this는 button, button의 상위(parentNode)는 td, 
+                                                                        //td의 상위 tr의 스타일로 백그라운드 색을 yellow로 줌
+            };
+            $button.onmouseout = function() {
+                this.parentNode.parentNode.style.background = "";
+            }
+            $button.onclick = function() {
+                this.parentNode.parentNode.remove();
+            }
+            $td.appendChild($button);
+            $tr.appendChild($td);
+        }
+        
         var jsonData = [{ "id": 1, "first_name": "Wells", "last_name": "Bingley", "email": "wbingley0@independent.co.uk", "gender": "Male" },
         { "id": 2, "first_name": "Gwendolen", "last_name": "Swinnard", "email": "gswinnard1@google.com", "gender": "Female" },
         { "id": 3, "first_name": "Devland", "last_name": "Burgwyn", "email": "dburgwyn2@booking.com", "gender": "Male" },
@@ -62,6 +125,7 @@
             $td = document.createElement("td");
             var $button = document.createElement("button");
             $button.innerHTML = "Click";
+            $button.setAttribute('class', 'btnClass');
             $button.onmouseover = function() {
                 // window.alert("click");
                 this.parentNode.parentNode.style.background = "yellow"; //this는 button, button의 상위(parentNode)는 td, 
@@ -76,26 +140,6 @@
             $td.appendChild($button);
             $tr.appendChild($td);
             $table.appendChild($tr);
-            var show = document.getElementById('show');
-            var $btn=document.getElementById('btn');
-            var tbl = document.getElementById("tbl");
-            
-            $btn.onclick = addList();
-            function addList() {
-                var a = document.getElementById("a").value;
-                var b = document.getElementById("b").value;
-                var c = document.getElementById("c").value;
-                var id = [a,b,c];
-                // document.write("<tr><td>"+a+"</td><td>"+b+"</td><td>"+c+"</td></tr>");
-                var $tr = document.createElement("tr");
-                for (var i=0; i<3; i++) {
-                    var $td = document.createElement("td");
-                    var $text = document.createTextNode(id[i]);
-                    $td.appendChild($text);
-                }
-                $tr.appendChild($td);
-                $table.appendChild(tbl);
-            }
         });
         
         show.appendChild($table);

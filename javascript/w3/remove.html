@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<body id="bdy">
+
+    <div id="div1">
+        <p id="p1">This is a paragraph.</p>
+        <p id="p2">This is another paragraph.</p>
+    </div>
+    <p id="p3">This is another paragraph.</p>
+
+    <script>
+        var parent = document.getElementById("div1");
+        var child = document.getElementById("p1");
+        // parent.removeChild(child);
+        var ptags = document.querySelectorAll("#div1 > p");
+        console.log[ptags];
+        ptags.forEach(function(a) {
+            parent.removeChild(a);
+            //a.remove();
+        });
+    </script>
+
+</body>
+
+</html>
