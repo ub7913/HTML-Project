@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax/ajax.html</title>
+</head>
+<body>
+    <h1>Ajax 요청 페이지.</h1>
+    <button id="btn">Click</button>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = ajaxFunc;
+
+        function ajaxFunc() {
+            var xhtp = new XMLHttpRequest();
+            xhtp.onreadystatechange = function() {//이벤트를 일으켰을때 처리 해주는 속성
+                console.log('readyState => ' + xhtp.readyState);
+                console.log('status => ' + xhtp.status);//데이터를 요청했던 서버의 상태
+                if(xhtp.readyState == 4 && xhtp.status == '200') {//정상적으로 요청이 끝나고(4), 서버 상태가 ok(200)일때 실행하라는 의미
+                    // console.log(xhtp.responseText);//페이지를 읽어옴,json을 문자열로 읽어옴
+                    var data = JSON.parse(xhtp.responseText);//오브젝트 타입으로 변환 시켜줌, 최종적으로 결과 값을 읽어 오는 것이 responseText임
+                    console.log(data);
+                    for(var i=0; i<data.length; i++) {
+                        document.write(data[i].first_name + "<br>");
+                    }
+                    data.forEach(function(a,b,c) {
+                        document.write(a.first_name + "<br>");
+                    });
+                }
+            }
+            xhtp.open('get', 'MOCK_DATA.json')//해당되는 (서버)페이지를 지정
+            xhtp.send();
+            //이전 실습(arrayMap.html 할때)할때는 데이터를 가져 올 방법이 없어서 복사해서 붙여넣고 작업을 했지만 ajax를 이용하면 그럴 필요없이 데이터가 담긴 파일을 불러와서 사용 할 수 있다.
+        }
+    </script>
+</body>
+</html>
