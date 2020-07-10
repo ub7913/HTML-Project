@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery/getSet.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#btn1').click(function() {
+                var getVal = $('#test1').text();// text()에 매개값이 없으면 #test1의 값을 가져 오는것이고, text('ss')이렇게 값이 있으면 매개값을 #test1에 ss를 넣는다
+                console.log(getVal);
+                $('#test1').text('<b>This is new paragraph.</b>');//text에는 태그는 오지 못한다.
+            });
+
+            $('#btn2').on('click', function() {
+                $('#test2').html('<b>This is new paragraph.</b>');//text와 다르게 html은 태그가 먹힌다.
+            });
+
+            $('#btn3').on('click', callbtn3);
+        });
+        function callbtn3() {
+            $('#test3').val('Mini Mouse');//value속성을 바꾸는것
+        }
+    </script>
+</head>
+
+<body>
+    <p id="test1">This is a paragraph.</p>
+    <p id="test2">This is another paragraph.</p>
+
+    <p>Input field: <input type="text" id="test3" value="Mickey Mouse"></p>
+
+    <button id="btn1">Set Text</button>
+    <button id="btn2">Set HTML</button>
+    <button id="btn3">Set Value</button>
+</body>
+
+</html>

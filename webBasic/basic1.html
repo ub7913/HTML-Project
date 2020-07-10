@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var xhtp = new XMLHttpRequest();
+        xhtp.onreadystatechange = function() {
+            if(xhtp.readyState == 4 && xhtp.status == '200') {
+                showXml(xhtp);
+            }
+        }
+        xhtp.open("get", "cd_catalog.xml");
+        xhtp.send();
+
+        function showXml(x) {
+            console.log(xhtp.responseXML);//xml형식으로 출력됨
+            // console.log(xhtp.responseText);//텍스트 타입으로 출력됨
+            var datas = x.responseXML;
+            var cds = datas.getElementsByTagName('CD');
+            console.log(cds);
+            var tags = "<table border = '1'>";
+            tags += "<tr><th>Title</th><th>Artist</th><th>Country</th></th>";
+            for(var i=0; i<cds.length; i++) {
+                // document.write(cds[i].childNodes[1].childNodes[0].nodeValue + "<br>" + cds[i].childNodes[3].childNodes[0].nodeValue + "<br>" + "-----------------" + "<br>");
+                tags += "<tr>";
+                tags += "<td>" + cds[i].childNodes[1].childNodes[0].nodeValue + "</td>";
+                tags += "<td>" + cds[i].childNodes[3].childNodes[0].nodeValue + "</td>";
+                tags += "<td>" + cds[i].childNodes[5].childNodes[0].nodeValue + "</td>";
+                tags += "</tr>";
+            }
+            tags += "</table>";
+            document.body.innerHTML = tags;
+        }
+    </script>
+</body>
+</html>

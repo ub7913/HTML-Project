@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h1">Hello</h1>
+    <h2>Hello</h2>
+    <h3>Hello</h3> <!--이미 이런 태그들을 만들어져 있는 것이라서 우리가 건드릴수 없다. 그래서 우리가 동적으로 만들기 위해서 자바스크립트를 이용한다.-->
+    <h1 id="h2">Hello</h1>
+    <h1 id="h3">Hello</h1>
+    <script>
+        //해당되는 요소를 선택해 우리가 제어 할 수 있다.
+        console.log(this);
+        var body_h1 = document.querySelectorAll("body > h1#h2");
+        console.log(body_h1);
+        body_h1.forEach(function(o) {
+            console.log(o);
+            o.onclick = function() {
+                o.style.background = "yellow";
+            }
+        });
+        // document.querySelectorAll("body > h1")[0].onclick = function() {
+        //     this.style.color="yellow";
+        // }
+        document.getElementsByTagName('h1')[0].innerHTML = "World";
+    </script>
+</body>
+</html>

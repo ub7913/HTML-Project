@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person = {
+            name: "Hong",
+            age: 20,
+            address: "Daegu"
+        }
+        console.log(person.name);
+        person.name = "Hwang";
+        console.log(person.name);
+
+        for(p in person) { //in은 오브젝트에서 쓰이는거(in은 오브젝트의 요소들을 가져온다)? of는 배열에서 쓰이는거?
+            console.log(p);
+        }
+    </script>
+</body>
+</html>

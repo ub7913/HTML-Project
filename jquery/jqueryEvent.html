@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // $('p').click(function(){});
+            // $('p').mouseover(function(){});
+            // $('p').mouseover(function(){});
+            //이렇게 나눠서 이벤트를 쓸수 있는 것을 on은 한번에 쓸수 있게 만든다.
+
+            $("p").on(
+                {
+                'click': function () {//$("p").click(function () ~ 이렇게 쓰는것과 같음
+                    $(this).hide();
+                },
+                'mouseenter': function(){
+                    $(this).css('background', 'yellow');
+                },
+                'mouseleave': function() {
+                    $(this).css('background', '');
+                }
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <p>If you click on me, I will disappear.</p>
+    <p>Click me away!</p>
+    <p>Click me too!</p>
+
+</body>
+
+</html>

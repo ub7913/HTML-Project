@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $(":button").hide();
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <h2>This is a heading</h2>
+
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+
+    <button>Click me</button>
+    <input type="button" value="Click"><!--타입이 버튼 인것(속성)이지 태그 자체는 input이기 때문에 위의 제이쿼리가 적용되지 않는다.-->
+
+</body>
+
+</html>

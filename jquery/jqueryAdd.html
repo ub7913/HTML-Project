@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery/jqueryAdd.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        var jsonData = [{ "id": 1, "first_name": "Wells", "last_name": "Bingley", "email": "wbingley0@independent.co.uk", "gender": "Male" },
+        { "id": 2, "first_name": "Gwendolen", "last_name": "Swinnard", "email": "gswinnard1@google.com", "gender": "Female" },
+        { "id": 3, "first_name": "Devland", "last_name": "Burgwyn", "email": "dburgwyn2@booking.com", "gender": "Male" },
+        { "id": 4, "first_name": "Clevie", "last_name": "Hertwell", "email": "chertwell3@wired.com", "gender": "Male" },
+        { "id": 5, "first_name": "Christel", "last_name": "Bachelor", "email": "cbachelor4@aol.com", "gender": "Female" },
+        { "id": 6, "first_name": "Alma", "last_name": "Bangley", "email": "abangley5@wp.com", "gender": "Female" },
+        { "id": 7, "first_name": "Farly", "last_name": "Delagnes", "email": "fdelagnes6@diigo.com", "gender": "Male" },
+        { "id": 8, "first_name": "Aurelea", "last_name": "Corston", "email": "acorston7@hatena.ne.jp", "gender": "Female" },
+        { "id": 9, "first_name": "Zora", "last_name": "Doddemeade", "email": "zdoddemeade8@arizona.edu", "gender": "Female" },
+        { "id": 10, "first_name": "Maire", "last_name": "Torel", "email": "mtorel9@amazonaws.com", "gender": "Female" },
+        { "id": 11, "first_name": "Reinhard", "last_name": "Siviter", "email": "rsivitera@home.pl", "gender": "Male" },
+        { "id": 12, "first_name": "Kurt", "last_name": "Domokos", "email": "kdomokosb@europa.eu", "gender": "Male" },
+        { "id": 13, "first_name": "Kingsley", "last_name": "St. Aubyn", "email": "kstaubync@usatoday.com", "gender": "Male" },
+        { "id": 14, "first_name": "Rawley", "last_name": "McKoy", "email": "rmckoyd@bizjournals.com", "gender": "Male" },
+        { "id": 15, "first_name": "Melantha", "last_name": "McGrill", "email": "mmcgrille@networksolutions.com", "gender": "Female" }];
+        
+        $(document).ready(function() {
+            var $table = $('<table />').attr('border', '1');//document.createElement('table')과 같은 의미
+            var $th = $('<tr />').append(
+                $('<th />').text('학번'),
+                $('<th />').text('이름'),
+                $('<th />').text('점수')
+            );
+            $table.append($th);
+            var $tr = $('<tr />').append(
+                $('<td />').text('101'),//document.createTextNode()와 같은것, td태그를 만들어 텍스트로 101을 담는것
+                $('<td />').text('Hong'),
+                $('<td />').text(90),
+                $('<td />').html('<button>Click</button>')
+            );
+            // var $td1 = $('<td />').text('101');//td태그를 만들어 텍스트로 101을 담는것
+            // var $td2 = $('<td />').text('Hong');
+            // var $td3 = $('<td />').text(90);
+            // $tr.append($td1, $td2, $td3);//위처럼 더 간단하게 표현 가능
+            $table.append($tr);
+            $('#show').append($table);
+        });
+    </script>
+</head>
+<body>
+    <p id="show"></p>
+</body>
+</html>

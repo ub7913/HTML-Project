@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery/jquery.html</title>
+    <script src="jquery-3.5.1.min.js"></script><!--이게 연결 되어 있어야지 제이쿼리를 이용할 수 있다.-->
+    <script>
+        $(document).ready(function() {
+            $("#show").html("Hello, World");
+        });//document라는 선택자에 담긴 객채를 ready라는 function을 실행하는것,ready는 이 문서를 완전 다 읽어서 준비된 상태로 만들어줌. 그러니까 선언되는 값이 밑에 있어도(아래위 순서가 달라도) 사용 가능 하다는 얘기
+    </script>
+</head>
+<body>
+    <p id="show"></p>
+    <p class="show"></p>
+    <div class="show"></div>
+    <script>
+        // document.getElementById('show').innerHTML = "Hello";//자바스크립트
+        $("#show").html("Hello");//위의 방식과 똑같은것임(제이쿼리) 
+        document.getElementsByClassName("show")[0].innerHTML = "World";
+        $(".show").html("World");
+        $(".show").eq(0).html("World");
+        document.querySelectorAll("div.show")[0].innerHTML = "Yeah!!";
+        $("div.show").eq(0).html("Yeah!!");
+        // document.getElementsByClassName("show")[0].style.background = 'yellow';
+        // document.getElementsByClassName("show")[1].style.background = 'yellow';
+        $(".show").css('background', 'yellow');//선택자를 가져와서 css 코드를 짜보니, 위의 자바스크립트로 한것 보다 훨씬 간단하게 코드를 짤수있음
+        console.log($('.show'));
+    </script>
+</body>
+</html>

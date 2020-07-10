@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("ul li:first").hide();//클릭을 하면 ul태그의 자손 li태그의 첫번째만 사라지게 하는것, 제이쿼리는 한문장으로 끝난다.
+                // var lis = document.querySelectorAll("ul")[0].querySelectorAll('li:first-child');
+                // var lis = document.querySelector("ul").querySelectorAll('li:first-child');//자바스크립트를 이용하면 문장이 길어진다.
+                // for(var i=0; i<lis.length; i++) {
+                //     lis[i].style.display = "none";
+                // }
+                $("ul li:first-child").hide();//$("ul li:first").hide();다르게 ul태그 자손의 li태그의 첫째 자손을 다 선택하는것임
+            });
+
+            $("button").hover(function() {
+                $(this).css('background', 'green');
+            }, function() {
+                $(this).css('background', 'red');
+            });
+
+            $("button").eq(1).hover(function() { //인덱스 값으로 여러가지 버튼 중 하나를 선택 가능 하다.
+                $(this).css('background', 'green');
+            }, function() {
+                $(this).css('background', '');
+            })
+
+            $("button:last").hover(function() {//많은 버튼 중 마지막 하나를 선택할 수 있다.
+                $(this).css('background', 'blue');
+            }, function() {
+                $(this).css('background', '');
+            })
+
+            $('li').click(function() {
+                $(this).hide();//this는 li태그를 의미함
+            });
+
+            $('li').mouseenter(function() { //마우스가 해당되는 요소에 들어가면(mouseenter)
+                $(this).css('background','yellow');
+            });
+        
+            $('li').mouseleave(function() {
+                $(this).css('background', '');
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <p>List 1:</p>
+    <ul>
+        <li>Coffee</li>
+        <li>Milk</li>
+        <li>Tea</li>
+    </ul>
+
+    <p>List 2:</p>
+    <ul>
+        <li>Coffee</li>
+        <li>Milk</li>
+        <li>Tea</li>
+    </ul>
+
+    <button>Click me</button>
+    <button>Click me</button>
+    <button>Click me</button>
+
+</body>
+
+</html>
