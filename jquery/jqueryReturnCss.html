@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                alert("Background color = " + $("p").css("background-color"));//윈도우 경고창(alert)으로 p태그의 백그라운드 컬러를 나타내라는 의미,p태그가 세개이지만 하나만 윈도우 경고창에 출력됨
+                $("p").each(function(){//해당하는 p요소들의 각각(each)의 백그라운드 컬러를 콘솔에 출력
+                    console.log($(this).css("background-color"))
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <h2>This is a heading</h2>
+
+    <p style="background-color:#ff0000">This is a paragraph.</p>
+    <p style="background-color:#00ff00">This is a paragraph.</p>
+    <p style="background-color:#0000ff">This is a paragraph.</p>
+
+    <button>Return background-color of p</button>
+
+</body>
+
+</html>

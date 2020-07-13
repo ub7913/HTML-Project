@@ -115,6 +115,7 @@
         }
         $table.appendChild($tr);
         jsonData.forEach(function(o,i,a) {
+            console.log(o);
             var $tr = document.createElement("tr");
             for (field of titles) {
                 var $td = document.createElement("td");

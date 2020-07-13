@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .descendants * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // $("div").children().css({ "color": "red", "border": "2px solid red" });//div기준으로 자식 요소들을 불러옴
+            $("div").children().eq(0).css({ "color": "red", "border": "2px solid red" });//자식 요소중 0번째 인덱스 요소(eq(0))를 불러옴
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="descendants" style="width:500px;">div (current element)
+        <p>p (child)
+            <span>span (grandchild)</span>
+        </p>
+        <p>p (child)
+            <span>span (grandchild)</span>
+        </p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("h1, h2, p").addClass("blue");//h1,h2,p태그에 blue라는 클래스를 추가함, attr('class', 'blue') 이렇게 쓰는 것과 같음
+                $("div").addClass("important");//div태그에 important클래스를 추가함
+            });
+        });
+    </script>
+    <style>
+        .important {
+            font-weight: bold;
+            font-size: xx-large;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+
+    <div>This is some important text!</div><br>
+
+    <button>Add classes to elements</button>
+
+</body>
+
+</html>

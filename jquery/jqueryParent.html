@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .ancestors * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("span").parent().css({ "color": "red", "border": "2px solid red" });//제이쿼리에서는 parent메소드를 통해 부모태그를 찾아 간다.
+            // $("span").parents().css({ "color": "red", "border": "2px solid red" });//span태그의 모든 상위요소를 찾아감
+            $("span").parentsUntil('div').css({ "color": "red", "border": "2px solid red" });//span태그 부모요소 부터 div바로 아래 하위 요소까지만 불러온다.
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="ancestors">
+        <div style="width:500px;">div (great-grandparent)
+            <ul>ul (grandparent)
+                <li>li (direct parent)
+                    <span>span</span>
+                </li>
+            </ul>
+        </div>
+
+        <div style="width:500px;">div (grandparent)
+            <p>p (direct parent)
+                <span>span</span>
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

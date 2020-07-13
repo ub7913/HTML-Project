@@ -26,9 +26,11 @@ $(document).ready(function() {
     $table.append($tr);
     //데이터 영역
     jsonData.forEach(function(o) {
+        console.log(o);
         var $tr = $('<tr />').mouseenter(mouseenterFunc)
                              .mouseout(mouseoutFunc);
         titles.forEach(function(f) {
+            console.log(f);
             $tr.append($('<td />').text(o[f]));
         });
         var $btn = $('<td />').html('<button>Click</button>').click(btnFunc);
