@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test02/exam06.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $.ajax({
+                url: "studentScore.json",
+                success: function (result, status, xhr) {
+                    getData(result);
+                }
+            });
+            
+        function getData(data) {
+            var $table = $('<table />').attr({'border':'1', 'id':'tbl'});//태그의 속성값을 여러개 주고 싶으면 이렇게 하면 된다.
+            var $tr = $('<tr />');
+            $tr.append($('<th />').text('고객번호'),
+                       $('<th />').text('고객명'),
+                       $('<th />').text('전화번호'),
+                       $('<th />').text('이메일'),
+                       $('<th />').text('성별')
+            );
+            $table.append($tr);
+            data.forEach(function(o) {
+                var $tr = $('<tr />');
+                for (i in o) {
+                    console.log(i);
+                    $tr.append($('<td />').text(o[i]));
+                }
+                $table.append($tr);
+            });
+            $('#show').append($table);
+        }
+        
+    </script>
+</head>
+<body>
+    <p id="show"></p>
+</body>
+</html>

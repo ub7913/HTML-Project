@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2/exam05.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <p id="show"></p>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "emp.xml",
+                success: function (result) {
+                    var datas = result;//$(result).children().children();
+                    var datas1 = $(result).children().children();
+                    // var datas1 = $(result).children().children().children().eq(2).text();
+                    // var xmlDatas = $(datas).find("record");
+                    // console.log(datas);
+                    // console.log(xmlDatas);
+                    console.log(datas1);
+                    var $table = $('<table />').attr({ 'border': '1', 'id': 'tbl' });
+                    var $tr = $('<tr />');
+                    $tr.append($('<th />').text('사원번호'),
+                        $('<th />').text('사원이름'),
+                        $('<th />').text('회사명'),
+                        $('<th />').text('부서명'),
+                        $('<th />').text('직무 정보')
+                    );
+                    $table.append($tr);
+                    for (var i=0; i<datas.length; i++) {
+                        var $tr = $('<tr />');
+                        var record = datas1.eq(i);
+                        var fields = record.children();
+                        for (var j=0; j<fields.length; j++) {
+                            field = fields.eq(j);
+                            $tr.append($('<td />').field.text());
+                        }
+                    }
+                    // xmlDatas.forEach(function (o) {
+                    //     var $tr = $('<tr />');
+                    //     $tr.append($('<td />').$($(result).children().children().children().eq(o).text()));
+                        
+                    //     $table.append($tr);
+                    // });
+                    
+                    // for(var i=0; i<xmlDatas.length; i++) {
+                    //     var $tr = $('<tr />');
+                    //     $tr.append($('<td />').$(result).children().children().children().eq(i).text());
+                    //     $table.append($tr);
+                    // }
+
+                    $('#show').append($table);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
